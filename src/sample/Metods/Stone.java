@@ -4,7 +4,20 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
+/**
+ * Класс, отрисовывающий песочные часы для анимации.
+ * @author Bosaya Irina pPi-171
+ * @version 1.2
+ */
+
 public class Stone {
+    /**
+     * Этот метод отрисовывает фигуры, для анимации.
+     * @param gr,p,x1,x2,y1,y2,y3 Значения, которые
+     * требуется для обозначения координат фигур.
+     * @return Готовый рисунок.
+     */
+
         public void draw(GraphicsContext gr, Paint p, int x1, int x2, int y1, int y2, int y3) {
             gr.setStroke(Color.BLACK);
             gr.setLineWidth(2);

@@ -4,8 +4,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-import java.awt.*;
-import java.time.Clock;
+/**
+ * Класс, запускающий анимацию
+ * песочных часов.
+ * @author Bosaya Irina pPi-171
+ * @version 1.2
+ */
 
 public class ConImage extends Observer {
     GraphicsContext gr;
@@ -32,17 +36,24 @@ public class ConImage extends Observer {
         this.subject.attach(this);
     }
 
+    /**
+     * Этот метод запускает анимацию.
+     * @param count Значение, которое требуется
+     * для обозначения старта анимации.
+     * @return Готовая анимация.
+     */
+
     public void onComp(int count){
         this.count = count;
         this.start = subject.getState();
         this.state = true;
     }
-
-    public void offComp(){
-        p = Color.KHAKI;
-        this.state = false;
-    }
-
+    /**
+     * Этот метод возвращает анимацию к первоночальному виду.
+     * @param st Значение, которое требуется
+     * для получения доступа к Subject.
+     * @return Анимация в первоночальном виде.
+     */
     public void delComo(Subject st){
         p = Color.KHAKI;
         this.x1 = 105;
@@ -54,6 +65,13 @@ public class ConImage extends Observer {
         stone.draw(gr,p,x1,x2,y1,y2,y3);
         st.detach(this);
     }
+
+    /**
+     * Этот метод необходим для воспроизведения анимации.
+     * @param st Значение, которое требуется
+     * для получения доступа к Subject.
+     * @return Работающая анимация.
+     */
 
     @Override
     public void update(Subject st) {

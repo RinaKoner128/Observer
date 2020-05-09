@@ -23,23 +23,30 @@ public class Signal extends Observer {
         this.subject = subject;
         this.subject.attach(this);
     }
-
+    /**
+     * Этот метод запускает звук.
+     * @param count Значение, которое требуется
+     * для обозначения старта воспроизведения.
+     */
     public void onComp(int count){
         this.count = count;
         this.start = subject.getState();
         this.state = true;
     }
 
-    public void offComp(){
-        this.state = false;
-        mediaPlayer.stop();
-    }
-
+    /**
+     * Этот метод останавливает звук и удаляет его из скиска наблюдателя.
+     */
     public void delComo(Subject st){
         mediaPlayer.stop();
         st.detach(this);
     }
-
+    /**
+     * Этот метод необходим для воспроизведения звука.
+     * @param st Значение, которое требуется
+     * для получения доступа к Subject.
+     * @return Работающая анимацияПользователь слышит звук.
+     */
     @Override
     public void update(Subject st) {
         if (state) {
@@ -47,9 +54,6 @@ public class Signal extends Observer {
                 mediaPlayer.play();
                 start += count;
             }
-
-            if (st.getState() == start + 2)
-                mediaPlayer.stop();
         }
     }
 }
